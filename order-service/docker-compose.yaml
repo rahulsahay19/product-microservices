@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  rabbitmqorder:
+    image: rabbitmq:3-management
+    container_name: rabbitmqorder
+    ports:
+      - 5673:5672
+      - 15673:15672
