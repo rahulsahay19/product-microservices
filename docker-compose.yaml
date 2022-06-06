@@ -36,6 +36,17 @@ services:
       MYSQL_DATABASE: keycloak
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: password
+#  mysqldb:
+#    image: mysql:5.7
+#    volumes:
+#      - mysql_data:/var/lib/mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: inventory-service
+#      MYSQL_USER: inventory
+#      MYSQL_PASSWORD: password
+#    ports:
+#      - 3307:3306
   keycloak:
       image: quay.io/keycloak/keycloak:legacy
       environment:
@@ -55,6 +66,7 @@ services:
 volumes:
   data: {}
   mysql_data: {}
+#  mysqldb: {}
 
 networks:
   default:
