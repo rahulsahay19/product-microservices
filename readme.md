@@ -21,3 +21,7 @@
 ## Containers
 
 <img width="1463" alt="image" src="https://user-images.githubusercontent.com/3886381/172717573-5bed6856-b157-41ed-95da-643692c8b0b8.png">
+
+## Service Discovery
+
+![image](https://user-images.githubusercontent.com/3886381/172718143-528c80fc-e5af-4cc5-965a-b288a1c79181.png)
