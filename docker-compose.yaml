@@ -63,6 +63,15 @@ services:
         - 8180:8080
       depends_on:
         - mysql
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin-slim:${TAG:-latest}
+    container_name: zipkin
+    mem_limit: 300m
+    ports:
+      - 9411:9411
+    # Uncomment to enable debug logging
+    # command: --logging.level.zipkin2=DEBUG
+
 volumes:
   data: {}
   mysql_data: {}

@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.messaging.Message;
 
 import java.util.function.Consumer;
 
@@ -18,9 +19,7 @@ public class NotificationServiceApplication {
 	//Spring cloud stream
 	//This will receive message from rabbitmq and then call the service email sender to send the confirmation
 	@Bean
-	public Consumer<String> notificationEvenSupplier(){
-		return message ->{
-			new EmailSender().sendEmail(message);
-		};
+	public Consumer<Message<String>> notificationEventSupplier() {
+		return message -> new EmailSender().sendEmail(message.getPayload());
 	}
 }
