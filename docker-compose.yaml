@@ -71,10 +71,36 @@ services:
       - 9411:9411
     # Uncomment to enable debug logging
     # command: --logging.level.zipkin2=DEBUG
+  elasticsearch:
+    image: elasticsearch:7.9.2
+    ports:
+      - '9200:9200'
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+  kibana:
+    image: kibana:7.9.2
+    ports:
+      - '5601:5601'
+
+  logstash:
+    image: logstash:7.9.2
+    ports:
+      - '5005:5005'
+    volumes:
+      - type: bind
+        source: ./logstash_pipeline/
+        target: /usr/share/logstash/pipeline
+        read_only: true
 
 volumes:
   data: {}
   mysql_data: {}
+  elasticsearch-data: {}
 #  mysqldb: {}
 
 networks:
